@@ -13,14 +13,14 @@ public class GpsController {
 
     private final GpsRepository gpsRepository;
 
-    @PostMapping(value = {"/gps"})
+    @PutMapping(value = {"/gps"})
     @ResponseBody
-    public void getSpecGps(@RequestParam long latitude, @RequestParam long longitude) {
+    public void addSpecGps(@RequestParam long latitude, @RequestParam long longitude) {
         gpsRepository.save(new Gps(latitude, longitude));
     }
 
 
-    @GetMapping(value = {"/gpsall"})
+    @GetMapping(value = {"/gps/all"})
     public List<Gps> getAll() {
         List<Gps> gpsList = gpsRepository.findAll();
         return gpsList;

@@ -7,5 +7,4 @@ testy jednostkowe rozwiązania,
 obsługa logowania,
 walidacja parametrów,
 
-opis rozwiązan
-ia w projekcie w pliku README.md,
+opis rozwiązan ia w projekcie w pliku README.md,
