@@ -1,6 +1,5 @@
 package com.example.gps.controller;
 
-import com.example.gps.repository.GpsRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +18,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Sql("/sql/test.sql")
 class GpsControllerTest {
-
-    @Autowired
-    private GpsRepository gpsRepository;
 
     @Autowired
     private MockMvc mockMvc;

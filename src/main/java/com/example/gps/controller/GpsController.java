@@ -1,7 +1,7 @@
 package com.example.gps.controller;
 
-import com.example.gps.moedel.Gps;
-import com.example.gps.repository.GpsRepository;
+import com.example.dto.GpsDto;
+import com.example.services.GpsServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,19 +11,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GpsController {
 
-    private final GpsRepository gpsRepository;
+    private final GpsServices gpsServices;
 
-    @PutMapping(value = {"/gps"})
+
+    @PostMapping(value = {"/gps"})
     @ResponseBody
     public void addSpecGps(@RequestParam long latitude, @RequestParam long longitude) {
-        gpsRepository.save(new Gps(latitude, longitude));
+        gpsServices.addToData(latitude, longitude);
     }
 
 
     @GetMapping(value = {"/gps/all"})
-    public List<Gps> getAll() {
-        List<Gps> gpsList = gpsRepository.findAll();
-        return gpsList;
+    public List<GpsDto> getAllGpsSpec() {
+        return gpsServices.getAllGps();
     }
 }
-
