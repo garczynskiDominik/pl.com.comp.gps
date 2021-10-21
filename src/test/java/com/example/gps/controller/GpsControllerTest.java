@@ -2,18 +2,16 @@ package com.example.gps.controller;
 
 import com.example.gps.moedel.Gps;
 import com.example.gps.repository.GpsRepository;
-import com.example.services.GpsServices;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.web.util.NestedServletException;
 
 import java.util.List;
 
@@ -26,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Sql("/sql/test.sql")
-class GpsControllerTest {
+public class GpsControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -65,10 +63,12 @@ class GpsControllerTest {
     }
 
 
-    @Test
+    @Test(expected = NestedServletException .class)
     public void testShouldReturnThrow() throws Exception {
         mockMvc.perform(put("/gps?latitude=300&longitude=300"))
-                .andReturn();
+                .andExpect(status().is5xxServerError());
+
+
 
     }
 }

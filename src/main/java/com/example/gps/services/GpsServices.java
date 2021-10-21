@@ -1,7 +1,7 @@
-package com.example.services;
+package com.example.gps.services;
 
-import com.example.dto.GpsConverter;
-import com.example.dto.GpsDto;
+import com.example.gps.dto.GpsConverter;
+import com.example.gps.dto.GpsDto;
 import com.example.gps.moedel.Gps;
 import com.example.gps.repository.GpsRepository;
 import lombok.RequiredArgsConstructor;

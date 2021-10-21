@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.gps.dto;
 
 import com.example.gps.moedel.Gps;
 import org.springframework.stereotype.Component;

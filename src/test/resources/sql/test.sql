@@ -1,2 +1,2 @@
 INSERT INTO gps (id,latitude,longitude)
-VALUES (90,50,50);
+VALUES (9999,50,50);

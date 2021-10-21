@@ -1,7 +1,7 @@
 package com.example.gps.controller;
 
-import com.example.dto.GpsDto;
-import com.example.services.GpsServices;
+import com.example.gps.dto.GpsDto;
+import com.example.gps.services.GpsServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class GpsController {
 
     @PutMapping(value = {"/gps"})
     @ResponseBody
-    public void addSpecGps(@RequestParam @Min(value = -90) @Max(value = 90) long latitude, @RequestParam @Min(value = 180) @Max(value = 180) long longitude) {
+    public void addSpecGps(@RequestParam @Min(value = -90) @Max(value = 90) long latitude, @RequestParam @Min(value = -180) @Max(value = 180) long longitude) {
         gpsServices.addToData(latitude, longitude);
     }
 
