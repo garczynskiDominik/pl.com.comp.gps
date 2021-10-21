@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.List;
 
@@ -65,8 +66,11 @@ class GpsControllerTest {
 
     @Test
     public void testShouldReturnThrow() throws Exception {
-        mockMvc.perform(put("/gps?latitude=300&longitude=300"))
-                .andExpect(status().is5xxServerError());
+        MvcResult mvcResult = mockMvc.perform(put("/gps?latitude=300&longitude=300"))
+                .andReturn();
+        System.out.println(mvcResult);
+//                .andExpect(status().isBadRequest());
+
 
 
     }

@@ -21,9 +21,7 @@ public class Gps {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Range(min = -90, max = 90, message = "Invalid latitude")
     private long latitude;
-    @Range(min = -180, max = 180, message = "Invalid longitude")
     private long longitude;
 
     public Gps(long latitude, long longitude) {
