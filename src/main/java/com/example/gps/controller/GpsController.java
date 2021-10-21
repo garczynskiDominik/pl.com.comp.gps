@@ -14,7 +14,7 @@ public class GpsController {
     private final GpsServices gpsServices;
 
 
-    @PostMapping(value = {"/gps"})
+    @PutMapping(value = {"/gps"})
     @ResponseBody
     public void addSpecGps(@RequestParam long latitude, @RequestParam long longitude) {
         gpsServices.addToData(latitude, longitude);
