@@ -70,12 +70,6 @@ class GpsControllerTest {
         mockMvc.perform(put("/gps?latitude=300&longitude=300"))
                 .andReturn();
 
-//                .andReturn();
-//        System.out.println(mvcResult);
-//                .andExpect(status().isBadRequest());
-
-
-
     }
 }
 
