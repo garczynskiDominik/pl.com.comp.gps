@@ -33,6 +33,18 @@ public class GpsControllerTest {
 
 
     @Test
+    @Sql("/sql/test.sql")
+    @Sql(scripts = "/sql/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    public void testShouldReturnGpsData() throws Exception {
+        mockMvc.perform(get("/gps/all"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.[0].latitude").value(50))
+                .andExpect(jsonPath("$.[0].longitude").value(50))
+                .andExpect(jsonPath("$.[0].id").value(9999))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     public void testShouldAddGpsToData() throws Exception {
         //given
         final long testLatitude = 20;
@@ -61,16 +73,6 @@ public class GpsControllerTest {
 
     }
 
-    @Test
-    @Sql("/sql/test.sql")
-    public void testShouldReturnGpsData() throws Exception {
-        mockMvc.perform(get("/gps/all"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.[0].latitude").value(50))
-                .andExpect(jsonPath("$.[0].longitude").value(50))
-                .andExpect(jsonPath("$.[0].id").value(9999))
-                .andExpect(status().isOk());
-    }
 
 }
 
