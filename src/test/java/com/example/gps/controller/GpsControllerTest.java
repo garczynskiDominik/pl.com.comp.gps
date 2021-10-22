@@ -3,7 +3,6 @@ package com.example.gps.controller;
 import com.example.gps.moedel.Gps;
 import com.example.gps.repository.GpsRepository;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class GpsControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].latitude").value(50))
                 .andExpect(jsonPath("$.[0].longitude").value(50))
-                .andExpect(jsonPath("$.[0].id").value(9999))
+                .andExpect(jsonPath("$.[0].deviceId").value(9999))
                 .andExpect(status().isOk());
     }
 

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class GpsDto {
 
-    private Long id;
+    private Long deviceId;
     private long latitude;
     private long longitude;
 

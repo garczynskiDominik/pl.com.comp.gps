@@ -1,1 +1,1 @@
-DELETE FROM gps WHERE id=9999;
+DELETE FROM gps WHERE device_id=9999;

@@ -18,7 +18,7 @@ import javax.persistence.Id;
 public class Gps {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long deviceId;
     private long latitude;
     private long longitude;
 

@@ -11,6 +11,6 @@ Długość i szerokość jest walidowana za pomocą @min, @max z biblioteki java
 Stworzyłem kontroler z dwoma endpointami, pierwszy służy do zapisywania lokalizaji w bazie
 Drugi endpoint służy do wyświetlania wszystkich lokalizacji. Metody serwisu działają 
 dziei interfejsowi GpsRepository który rozszerza interfejs JpaRepository. W projekcie używałem lombooka ze względu na czytelność
-oraz Swaggera do testowania endpointów. Testy napisałem za pomoca Mockito oraz Junit. 
+oraz Swaggera do testowania endpointów. Testy napisałem za pomoca MockMvc oraz Junit. 
 Testy testuja validacje, endpoint put czy dodał encje do bazy oraz endpoind get czy zwraca wlasciwy wynik.
 
