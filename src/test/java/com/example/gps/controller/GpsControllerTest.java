@@ -3,6 +3,7 @@ package com.example.gps.controller;
 import com.example.gps.moedel.Gps;
 import com.example.gps.repository.GpsRepository;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Sql("/sql/test.sql")
 public class GpsControllerTest {
 
     @Autowired
@@ -31,16 +31,6 @@ public class GpsControllerTest {
     @Autowired
     private GpsRepository gpsRepository;
 
-
-    @Test
-    public void testShouldReturnGpsData() throws Exception {
-        mockMvc.perform(get("/gps/all"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.[0].latitude").value(50))
-                .andExpect(jsonPath("$.[0].longitude").value(50))
-                .andExpect(jsonPath("$.[0].id").value(90))
-                .andExpect(status().isOk());
-    }
 
     @Test
     public void testShouldAddGpsToData() throws Exception {
@@ -63,14 +53,25 @@ public class GpsControllerTest {
     }
 
 
-    @Test(expected = NestedServletException .class)
+    @Test(expected = NestedServletException.class)
     public void testShouldReturnThrow() throws Exception {
         mockMvc.perform(put("/gps?latitude=300&longitude=300"))
                 .andExpect(status().is5xxServerError());
 
 
-
     }
+
+    @Test
+    @Sql("/sql/test.sql")
+    public void testShouldReturnGpsData() throws Exception {
+        mockMvc.perform(get("/gps/all"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.[0].latitude").value(50))
+                .andExpect(jsonPath("$.[0].longitude").value(50))
+                .andExpect(jsonPath("$.[0].id").value(9999))
+                .andExpect(status().isOk());
+    }
+
 }
 
 
