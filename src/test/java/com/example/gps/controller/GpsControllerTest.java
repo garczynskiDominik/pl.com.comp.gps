@@ -15,6 +15,7 @@ import org.springframework.web.util.NestedServletException;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.hasSize;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -41,6 +42,14 @@ public class GpsControllerTest {
                 .andExpect(jsonPath("$.[0].longitude").value(50))
                 .andExpect(jsonPath("$.[0].deviceId").value(9999))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    @Sql("/sql/test.sql")
+    @Sql(scripts = "/sql/clean.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+    public void shouldCheckSize() throws Exception {
+        mockMvc.perform(get("/gps/all"))
+                .andExpect(jsonPath("$.*", hasSize(1)));
     }
 
     @Test
